@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds">
+	<!-- Logging levels : ALL, TRACE, DEBUG, INFO, WARN, ERROR, OFF -->
+	<property name="LOG_PATH" value="C:/temp/logs/local" />
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%n[%date{HH:mm:ss.SSS}] %-5level [%-10(%logger{0}.%method \(%file:%line\))]▶▶▶  %msg</pattern>
+		</encoder>
+	</appender>
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${LOG_PATH}/local.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${LOG_PATH}/local_%d{yyyy-MM-dd}.%i.log
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<!-- or whenever the file size reaches 100MB -->
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%n[%date{HH:mm:ss.SSS}] %-5level [%-90(%logger{0}.%method \(%file:%line\))]▶▶▶  %msg</pattern>
+		</encoder>
+	</appender>
+ 	<logger name="jdbc.audit" level="INFO" additivity="false">
+ 		<appender-ref ref="STDOUT" />
+	</logger>
+
+	<logger name="jdbc.sqlonly" level="INFO" additivity="false">
+ 		<appender-ref ref="STDOUT" />
+	</logger>
+
+	<logger name="jdbc.sqltiming" level="DEBUG" additivity="false">
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+	<logger name="jdbc.resultsettable" level="INFO" additivity="false">
+		<appender-ref ref="STDOUT" />
+  	</logger>
+
+	<logger name="org.springframework" level="INFO" additivity="false">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+	</logger>
+    
+	<root level="ERROR">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+	</root> 
+</configuration>
