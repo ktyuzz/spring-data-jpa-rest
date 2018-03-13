@@ -1,4 +1,4 @@
-package com.ecis.domain;
+package com.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

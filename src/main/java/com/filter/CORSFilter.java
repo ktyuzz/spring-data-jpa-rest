@@ -1,4 +1,4 @@
-package com.ecis.filter;
+package com.filter;
 
 import java.io.IOException;
 import java.util.Enumeration;
@@ -47,9 +47,8 @@ public class CORSFilter implements Filter {
         response.setHeader("Access-Control-Allow-Origin", "*"); // application/x-spring-data-verbose+json
         response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD");
         response.setHeader("Access-Control-Allow-Credentials", "true");
-        response.setHeader("Access-Control-Max-Age", "86400"); // 86400초=24시간, 3600초=1시간  // 모든 서블릿 요청을 캐싱하지않고 매번 새요청으로 간주한다.
-        response.setHeader("Access-Control-Allow-Headers", "x-requested-with, origin, content-type, accept, authorization");
-
+        response.setHeader("Access-Control-Max-Age", "86400"); // 86400초=24시간, 3600초=1시간 // 모든 서블릿 요청을 캐싱하지않고 매번 새요청으로 간주한다.
+        response.setHeader("Access-Control-Allow-Headers", "Origin,Accept,X-Requested-With,Content-Type,Access-Control-Request-Method,Access-Control-Request-Headers,Authorization");
         // For HTTP OPTIONS verb/method reply with ACCEPTED status code -- per CORS handshake
         if (request.getMethod().equals("OPTIONS")) {
             response.setStatus(HttpServletResponse.SC_ACCEPTED);
@@ -65,7 +64,7 @@ public class CORSFilter implements Filter {
     public void init(FilterConfig fConfig) throws ServletException {
         // TODO Auto-generated method stub
     }
-    
+
     public static Map<String, Object> getHeader(HttpServletRequest request) {
         Map<String, Object> headerMap = new HashMap<String, Object>();
         try {

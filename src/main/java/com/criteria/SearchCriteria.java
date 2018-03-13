@@ -1,4 +1,4 @@
-//package com.ecis.criteria;
+//package com.criteria;
 //
 //public class SearchCriteria {
 //    private String key;

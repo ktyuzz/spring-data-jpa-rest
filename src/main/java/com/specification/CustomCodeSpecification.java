@@ -1,12 +1,12 @@
-//package com.ecis.specification;
+//package com.specification;
 //
 //import javax.persistence.criteria.CriteriaBuilder;
 //import javax.persistence.criteria.CriteriaQuery;
 //import javax.persistence.criteria.Predicate;
 //import javax.persistence.criteria.Root;
 //import org.springframework.data.jpa.domain.Specification;
-//import com.ecis.criteria.SearchCriteria;
-//import com.ecis.domain.CustomerCode;
+//import com.criteria.SearchCriteria;
+//import com.domain.CustomerCode;
 //
 //public class CustomCodeSpecification implements Specification<CustomerCode> {
 //    private SearchCriteria criteria;
